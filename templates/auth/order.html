@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Заказ {{ order.id }}{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="container basket-list">
+          </table>
+          <table class="table text-center table-responsive">
+              <thead>
+                  <tr>
+                      <th>Название товара</th>
+                      <th>Количество</th>
+                      <th>Цена за единицу</th>
+                      <th>Общая цена</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for product_in_order in products_in_order %}
+                       <tr>
+                           <td>
+                               <p>{{ product_in_order.product.name }}</p>
+                           </td>
+                           <td>
+                               <p class="product-in-checkout-count"> {{ product_in_order.count }}</p>
+                           </td>
+                           <td>
+                               <span class="product-price">{{ product_in_order.price_per_item }} KZT</span>
+                           </td>
+                           <td>
+                               <span class="total-product-in-basket-amount">{{ product_in_order.total_price }} KZT</span>
+                           </td>
+                       </tr>
+                  {% endfor %}
+                       <tr class="order-about">
+                           <td>
+                               <p>Номер заказа: {{ order.id }}</p>
+                           </td>
+                           <td>
+                               <p>Адрес доставки:</p>
+                           </td>
+                           <td>
+                               <p>{{ order.customer_adress }}</p>
+                           </td>
+                           <td>
+                               <p>Телефон: {{ order.user.username }}</p>
+                           </td>
+                       </tr>
+              </tbody>
+          </table>
+          <div class="text-center basket-total">
+              <p>Итого: <span id="total_order_amount">0</span> KZT</p>
+          </div>
+</div>
+
+{% endblock %}

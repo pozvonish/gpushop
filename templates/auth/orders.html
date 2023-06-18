@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Мои заказы{% endblock %}
+{% block content %}
+{% load static %}
+
+{% if orders %}
+    <div class="container basket-list">
+              <table class="table text-center table-responsive">
+                  <thead>
+                      <tr>
+                          <th>Номер заказа</th>
+                          <th>Сумма заказа</th>
+                          <th>Дата заказа</th>
+                          <th>Статус заказа</th>
+                          <th>Аккаунт: {{ request.user.username }}</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for order in reversed_orders %}
+                           <tr>
+                               <td>
+                                   <p>{{ order.id }}</p>
+                               </td>
+                               <td>
+                                   <p>{{ order.total_price }} KZT</p>
+                               </td>
+                               <td>
+                                   <p>{{ order.created }}</p>
+                               </td>
+                               <td>
+                                   <p>{{ order.status.name }}</p>
+                               </td>
+                               <td>
+                                   <a href="{%  url 'order' order.id %}">
+                                       <button class="btn btn-success">Подробнее</button>
+                                   </a>
+                               </td>
+                           </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+    </div>
+{% else %}
+    <div class="container empty-basket">
+        <div class="row">
+            <div>
+                <img class='icon' src="{% static 'media/icons/svg1.svg' %}" alt="dots icon">
+                <p class="basket-total">Заказов пока нет!</p>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

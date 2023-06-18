@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Raleway:wght@100;300;400&display=swap');
+
+html body {
+}
+
+body {
+    background: white;
+}
+
+
+.navbar a {
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 300;
+    color: black;
+}
+.navbar a:hover {
+    color: lightgray;
+}
+
+.btn {
+    font-family: Raleway;
+    font-size: 14px;
+    color: black;
+    border-color: black;
+    background: rgba(0, 0, 0, 0);
+    font-weight: 300;
+}
+.btn:hover {
+    background: black;
+    border-color: black;
+}
+
+
+.nav {
+    font-family: Raleway;
+    font-size: 16px;
+}
+
+.title-block p {
+    align-items: center;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 20px;
+}
+
+
+.product-card {
+    margin-top: 40px;
+    text-align: center;
+    align-items: center;
+    font-family: Raleway;
+}
+
+.product-card img {
+    margin-top: 10px;
+    padding: 20px;
+    border: 1px solid lightgray;
+}
+
+
+.catalog {
+    font-family: 'Raleway';
+    font-size: 20px;
+    padding-bottom: 25px
+}
+
+.catalog-text {
+    border-bottom: 1px lightgray solid;
+    padding-bottom: 25px
+}
+
+.product-list {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.sort-form {
+    display: flex;
+}
+
+.form-check {
+    margin-right: 10px;
+    font-family: Raleway;
+    font-size: 14px;
+}
+
+.form-check-input:checked {
+    border-color: black;
+    background-color: black;
+}
+
+.product-item {
+    font-family: Raleway;
+    margin-top: 10px;
+    height: auto;
+    background: white;
+    border: 1px solid lightgray;
+    position: relative;
+    padding: 5px;
+    padding-bottom: 5%;
+    text-align: center;
+    margin-bottom:10px;
+}
+
+.product-image {
+    max-width: 70%;
+    max-height: 70%;
+}
+
+.add-to-cart-btn {
+    margin: 20px;
+}
+
+.price {
+    margin-top: 20px;
+}
+
+.icon {
+    width: 4%;
+    heigh: 4%;
+}
+
+.site-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.site-icon-text {
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.form-group .form-control {
+    display: flex;
+}
+
+.form-error {
+    color:red;
+}
+
+.categories {
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/*.categories .col {*/
+/*    margin-top: 10px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+.categories label, select, button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.socials {
+    padding-right: 20px;
+}
+
+.checkout-form label {
+    margin-bottom: 5px;
+}
+
+.hidden-field {
+    display: none;
+}
+
+.basket-list {
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow-y: hidden;
+}
+
+.basket-list p {
+    margin: 20px;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+.table {
+    font-family: Raleway;
+    font-size: 16px;
+}
+
+.empty-basket {
+    height: 62vh;
+    align-items: center;
+    text-align: center;
+    display: grid;
+}
+
+.empty-basket p {
+    margin-top:5px;
+    font-family: Raleway;
+    font-size: 16px;
+}
+
+.inbasket {
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-control {
+    display: none;
+}
+
+.product-card p {
+    margin-bottom: 0;
+}
+
+.product-in-basket-count {
+    width: 50%;
+    text-align: center;
+}
+
+.basket-item{
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.basket-total {
+    font-family: Raleway;
+    font-weight: bold;
+}
+
+.basket-image {
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.about {
+    margin-top: 10px;
+}
+
+.buy-form {
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+}
+.description {
+    margin-top:10px
+}
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: rgb(var(--bs-tertiary-color-rgb));
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 9rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 36rem;
+  align-items: center;
+  text-align: center;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+/* rtl:begin:ignore */
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+/* rtl:end:ignore */
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+/* rtl:begin:remove */
+.featurette-heading {
+  letter-spacing: -.05rem;
+}
+
+/* rtl:end:remove */
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    text-align: center;
+    font-family: Raleway;
+    color: black;
+  }
+
+  .carousel-caption h1{
+    text-align: center;
+    font-family: Raleway;
+    color: black;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+
+.row.filters {
+  margin-bottom: 20px;
+  font-family: Raleway;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.filters select {
+    border: 0;
+}
+
+.registration {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.authentication {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.form-input {
+    width:250px;
+    text-align: center;
+}
+
+.order-about {
+    background: #f1f1f1;
+}

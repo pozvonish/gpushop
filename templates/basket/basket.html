@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Корзина ({{ products_total_count }}){% endblock %}
+{% block content %}
+{% load static %}
+{% if products_in_basket %}
+    <div class="container basket-list">
+    {#     #}
+              <table class="table text-center table-responsive">
+                  <thead>
+                      <tr>
+                          <th>Фото</th>
+                          <th>Название товара</th>
+                          <th>Количество</th>
+                          <th>Цена за единицу</th>
+                          <th>Общая цена</th>
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for product_in_basket in products_in_basket %}
+                           <tr>
+                               <td>
+                                   <img src="{{ product_in_basket.product.productimage_set.get.image.url }}" class="img-fluid basket-image">
+                               </td>
+                               <td>
+                                   <p>{{ product_in_basket.product.name }}</p>
+                               </td>
+                               <td>
+                                   <input value="{{ product_in_basket.count }}" type="number"
+                                          step="1" min="1" max="100"
+                                          class="product-in-basket-count">
+                               </td>
+                               <td>
+                                   <span class="product-price">{{ product_in_basket.price_per_item }} KZT</span>
+                               </td>
+                               <td>
+                                   <span class="total-product-in-basket-amount">{{ product_in_basket.total_price }} KZT</span>
+                               </td>
+                               <td>
+                                   <button class="btn btn-success basket-btn delete-item"
+                                       data-product_id="{{ product_in_basket.id }}"
+                                       data-count="{{ product_in_basket.count }}">Удалить</button>
+                               </td>
+                           </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+
+              <div class="text-center basket-total">
+                  <p>Итого: <span id="total_order_amount">0</span> KZT</p>
+              </div>
+              <div class="text-center">
+                  <a href="/checkout"><button type='submit' class="btn btn-primary checkout-btn">Заказать</button></a>
+              </div>
+    {#    </form>#}
+    </div>
+{% else %}
+    <div class="container empty-basket">
+        <div class="row">
+            <div>
+                <img class='icon' src="{% static 'media/icons/svg1.svg' %}" alt="dots icon">
+                <p class="basket-total">Корзина пуста!</p>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="container product">
+    <div class="product-card">
+        <div class="row">
+            <div class="col-lg-6">
+                {% for image_item in product.productimage_set.all %}
+                <img src="{{ image_item.image.url }}" class="img-fluid">
+                {% endfor %}
+                <div class="price">
+                    <p>{{ product.price }} KZT</p>
+                </div>
+                {% if product_in_basket %}
+                    <div class="forma">
+                        <form id="form_buying_product" class="form-check-inline" action="{% url 'basket_adding' %}">
+                            <input type="number" class="form-control" name="number" id="number" value="1">
+                            <div class="add-to-cart-btn">
+                                <p class="inbasket">
+                                    Товар добавлен
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                {% else %}
+                    <div class="forma">
+                        <form id="form_buying_product" class="form-check-inline" action="{% url 'basket_adding' %}">
+                            <input type="number" class="form-control" name="number" id="number" value="1">
+                            <div class="add-to-cart-btn">
+                                <button type="submit" class="btn btn-success"
+                                        data-product_id="{{ product.id }}"
+                                        data-product_name="{{ product.name }}"
+                                        data-product_price="{{ product.price }}"
+                                        id="submit-btn">
+                                    Добавить в корзину
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-6">
+                <div class="description">
+                    <p>{{ product.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

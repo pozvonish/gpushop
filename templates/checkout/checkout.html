@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}Оформление заказа{% endblock %}
+{% block content %}
+{% load static %}
+{% if order_sent %}
+    <div class="container empty-basket">
+            <div class="row">
+                <div>
+                    <img class='icon' src="{% static 'media/icons/success.svg' %}" alt="dots icon">
+                    <p class="basket-total">Ваш заказ принят!</p>
+                    <p class="basket-total">(Менеджер позвонит по указанному номеру для подтверждения заказа)</p>
+                </div>
+            </div>
+    </div>
+{% else %}
+<div class="container basket-list">
+    <form class="form-horizontal checkout-form" method="post">{% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Адрес доставки</label>
+                        <span class="form-error">{{ form.adress.errors }}</span>
+                        <input type="text" name="{{ form.adress.html_name}}" class="form-control checkout"
+                        value="{{ request.POST.adress }}">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Комментарий к заказу</label>
+                        <span class="form-error">{{ form.comment.errors }}</span>
+                        <input type="text" name="{{ form.comment.html_name }}" class="form-control checkout"
+                        value="{{ request.POST.comment }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+          <table class="table text-center table-responsive">
+              <thead>
+                  <tr>
+                      <th>Название товара</th>
+                      <th>Количество</th>
+                      <th class="hidden-field"></th>
+                      <th>Цена за единицу</th>
+                      <th>Общая цена</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for product_in_basket in products_in_basket %}
+                       <tr>
+                           <td>
+                               <p>{{ product_in_basket.product.name }}</p>
+                           </td>
+                           <td>
+                               <p class="product-in-checkout-count"> {{ product_in_basket.count }}</p>
+                           </td>
+                           <td class="hidden-field">
+                               <input value="{{ product_in_basket.count }}" type="hidden"
+                                          step="1" min="1" max="100"
+                                          class="product-in-basket-count"
+                                          name="product_in_basket_{{ product_in_basket.id }}">
+                           </td>
+                           <td>
+                               <span class="product-price">{{ product_in_basket.price_per_item }} KZT</span>
+                           </td>
+                           <td>
+                               <span class="total-product-in-basket-amount">{{ product_in_basket.total_price }} KZT</span>
+                           </td>
+                       </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+
+          <div class="text-center basket-total">
+              <p>Итого: <span id="total_order_amount">0</span> KZT</p>
+          </div>
+          <div class="text-center">
+              <a href="/"><button type='submit' class="btn btn-primary checkout-btn">Заказать</button></a>
+          </div>
+    </form>
+</div>
+{% endif %}
+{% endblock %}

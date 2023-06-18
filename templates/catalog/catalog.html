@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Каталог{% endblock %}
+{% block content %}
+{% load static %}
+  <div class="section">
+    <div class="container product-list">
+        <div class="container categories d-flex justify-content-center">
+            <div class="row filters">
+                    <form action="{% url 'filter' %}" method="GET">
+
+                            <label for="category">Категория:</label>
+                            <select id="category" name="category">
+                            <option value="all">Все</option>
+                            {% for category in view.get_cats %}
+                                <option value="{{ category.id }}" name="category">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+
+
+                            <label for="sort">Сортировка:</label>
+                        <select id="sort" name="sort">
+                            <option value="product__price" name="sort">Сначала дешевле</option>
+                            <option value="-product__price" name="sort">Сначала дороже</option>
+                        </select>
+
+
+                            <button type="submit" class="btn btn-success">Применить</button>
+
+                    </form>
+            </div>
+        </div>
+        <div class="row">
+
+            {% for product_image in products_images %}
+
+                <div class="col-lg-4">
+                    <div class="product-item">
+                        <div>
+                            <a href="{%  url 'product' product_image.product.id %}">
+                                <img src="{{ product_image.image.url }}" class="img-fluid product-image">
+                            </a>
+                        </div>
+                        <p>{{ product_image.product.name }}</p>
+                        <p style="min-height: 73px;">
+                            {{ product_image.product.description|truncatechars_html:100 }}
+                        </p>
+                        <div>
+                            {{ product_image.product.price }} KZT
+                        </div>
+                        <div class="about">
+                            <a href="{%  url 'product' product_image.product.id %}"><button class="btn btn-success">Подробнее</button></a>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

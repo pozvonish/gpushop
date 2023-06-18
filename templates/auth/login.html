@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Авторизация{% endblock %}
+{% block content %}
+{% load static %}
+
+    <div class="container authentication d-flex justify-content-center">
+        <form class='authentication-form' method="post">{% csrf_token %}
+        <div class="row form-error">{{ form.non_field_errors }}</div>
+        {% for f in form %}
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>
+                </div>
+                <div class="col">
+                    <p>{{ f }}</p>
+                </div>
+                <div class="row form-error">
+                    {{ f.errors }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row justify-content-center">
+            <button type="submit" class="btn btn-success reg-btn">Войти</button>
+        </div>
+    </form>
+    </div>
+{% endblock %}

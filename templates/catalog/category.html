@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+  <div class="section">
+    <div class="container">
+        <div class="categories d-flex justify-content-center">
+            <div class="col-md-3 mb-2 mb-md-0"></div>
+            <div class="row">
+                {% for category in product_categories %}
+                    <div class="col">
+                        <a href="#"><button class="btn btn-success" data-category_id="{{ category.id }}">{{ category }}</button></a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-3 text-end"></div>
+        </div>
+        <div class="row">
+
+            {% for product_image in products_images %}
+
+                <div class="col-lg-4">
+                    <div class="product-item">
+                        <div>
+                            <a href="{%  url 'product' product_image.product.id %}">
+                                <img src="{{ product_image.image.url }}" class="img-fluid product-image">
+                            </a>
+                        </div>
+                        <p>{{ product_image.product.name }}</p>
+                        <p>
+                            {{ product_image.product.description|truncatechars_html:100 }}
+                        </p>
+                        <div>
+                            {{ product_image.product.price }} KZT
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
