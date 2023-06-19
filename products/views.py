@@ -27,16 +27,6 @@ def product(request, product_id):
 
     return render(request, 'products/product.html', locals())
 
-def catalog(request):
-    product_categories = reversed(ProductCategory.objects.filter())
-    products_images = ProductImage.objects.filter(is_active=True, is_main=True, product__is_active=True).order_by('product__price')
-    return render(request, 'catalog/catalog.html', locals())
-
-def category(request, category_id):
-    product_categories = reversed(ProductCategory.objects.filter())
-    products_images = ProductImage.objects.filter(is_active=True, is_main=True, product__is_active=True, product__category=category_id).order_by('product__price')
-    return render(request, 'catalog/catalog.html', locals())
-
 class Catalog(Category, ListView):
     model = ProductImage
     template_name = 'catalog/catalog.html'
